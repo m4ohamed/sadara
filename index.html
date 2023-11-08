@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Check-In/Check-Out</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">Employee Check-In/Check-Out</div>
+
+        <!-- Login Form -->
+        <div class="login-form">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button id="loginButton">Login</button>
+        </div>
+
+        <div class="employee-info">
+            <!-- Employee name will be displayed here after login -->
+        </div>
+
+        <div class="action-buttons">
+            <button id="checkInButton" style="display: none;">Check In</button>
+            <button id="checkOutButton" style="display: none;">Check Out</button>
+        </div>
+        <div class="admin-panel" style="display: none;">
+            <h2>Admin Panel</h2>
+            <input type="text" id="newEmployee" placeholder="New Employee Name">
+            <input type="password" id="newEmployeePassword" placeholder="Password for New Employee">
+            <button id="addEmployeeButton">Add Employee</button>
+            <button id="generateReportButton">Generate Report</button>
+            <button id="adminLogoutButton" style="display: none;">Logout</button>
+        </div>
+        <div class="report-panel" style="display: none;">
+            <h2>Report Panel</h2>
+            <div id="report"></div>
+        </div>
+        <div class="log">
+            <ul id="logList"></ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
