@@ -7,7 +7,6 @@ const employeeInfo = document.querySelector('.employee-info');
 const checkInButton = document.getElementById('checkInButton');
 const checkOutButton = document.getElementById('checkOutButton');
 const adminPanel = document.querySelector('.admin-panel');
-const adminLogoutButton = document.getElementById('adminLogoutButton');
 
 let loggedInUser = null;
 
@@ -38,16 +37,6 @@ loginButton.addEventListener('click', () => {
 function showAdminWelcomeMessage() {
     employeeInfo.textContent = `مرحبًا ${loggedInUser} (مدير)`;
 }
-
-adminLogoutButton.addEventListener('click', () => {
-    loggedInUser = null;
-    employeeInfo.textContent = '';
-    checkInButton.style.display = 'none';
-    checkOutButton.style.display = 'none';
-    adminPanel.style.display = 'none';
-    adminLogoutButton.style.display = 'none';
-    redirectToLoginPage();
-});
 
 function redirectToAdminPage() {
     window.location.href = 'admin.html';
