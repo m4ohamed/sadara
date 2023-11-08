@@ -1,5 +1,5 @@
-const adminUsername = 'admin';
-const adminPassword = '665544400';
+const adminUsername = 'admin'; // قم بتغيير اسم المستخدم الخاص بالمشرف
+const adminPassword = '665544400'; // قم بتغيير كلمة المرور الخاصة بالمشرف
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const loginButton = document.getElementById('loginButton');
@@ -17,26 +17,27 @@ const adminLogoutButton = document.getElementById('adminLogoutButton');
 
 let loggedInUser = null;
 
-// Check if the current user is an admin
+// التحقق مما إذا كان المستخدم الحالي هو مشرف
 function isAdmin() {
     return loggedInUser === adminUsername;
 }
 
-// Display the admin panel after admin login
+// عرض لوحة الإدارة بعد تسجيل الدخول للمشرف
 function showAdminPanel() {
     if (isAdmin()) {
         adminPanel.style.display = 'block';
     } else {
-        adminPanel.style display = 'none';
+        adminPanel.style.display = 'none';
     }
 }
 
-// Function to handle the admin logout
+// وظيفة التعامل مع تسجيل الخروج للمشرف
 function adminLogout() {
     loggedInUser = null;
     showAdminPanel();
     adminLogoutButton.style.display = 'none';
     reportPanel.style.display = 'none';
+    loginButton.style.display = 'block';
 }
 
 loginButton.addEventListener('click', () => {
@@ -47,47 +48,42 @@ loginButton.addEventListener('click', () => {
         loggedInUser = username;
         usernameInput.value = '';
         passwordInput.value = '';
-
-        showAdminPanel(); // Display admin panel if the user is an admin
-        adminLogoutButton.style.display = 'block'; // Display the admin logout button
+        showAdminPanel();
+        adminLogoutButton.style.display = 'block';
+        loginButton.style.display = 'none';
     } else {
-        // Check for employee login
-        if (employees.includes(username)) {
-            loggedInUser = username;
-            employeeInfo.textContent = `Logged in as: ${loggedInUser}`;
-            usernameInput.value = '';
-            passwordInput.value = '';
-            checkInButton.style.display = 'block';
-            checkOutButton.style.display = 'block';
-            employeeInfo.style.display = 'block';
-        } else {
-            alert('Invalid username or password');
-        }
+        alert('اسم المستخدم أو كلمة المرور غير صحيحة');
     }
 });
 
-// Add employee button
+// إضافة مستخدم جديد
 addEmployeeButton.addEventListener('click', () => {
     if (isAdmin()) {
         const newEmployeeName = newEmployeeInput.value;
         const newEmployeePassword = newEmployeePasswordInput.value;
         if (newEmployeeName && newEmployeePassword) {
+            // إضافة مستخدم جديد
             employees.push(newEmployeeName);
-            userPasswords[newEmployeeName] = newEmployeePassword;
+            // يمكنك تخزين كلمات المرور للمستخدمين في هيكل بيانات منفصل
+            // في هذا المثال، نضيفها إلى الهيكل بيانات الحضور والانصراف
+            checkInOutData[newEmployeeName] = [];
             newEmployeeInput.value = '';
             newEmployeePasswordInput.value = '';
         }
     }
 });
 
+// تسجيل الحضور
 checkInButton.addEventListener('click', () => {
-    logEvent('Check In', loggedInUser);
+    logEvent('تسجيل الحضور', loggedInUser);
 });
 
+// تسجيل الانصراف
 checkOutButton.addEventListener('click', () => {
-    logEvent('Check Out', loggedInUser);
+    logEvent('تسجيل الانصراف', loggedInUser);
 });
 
+// دالة لتسجيل الأحداث
 function logEvent(eventType, employeeName) {
     const currentTime = new Date().toLocaleString();
     const logEntry = `${eventType} - ${employeeName} - ${currentTime}`;
@@ -96,20 +92,9 @@ function logEvent(eventType, employeeName) {
     li.textContent = logEntry;
 
     logList.appendChild(li);
-
-    if (!checkInOutData[employeeName]) {
-        checkInOutData[employeeName] = [];
-    }
-
-    checkInOutData[employeeName].push(logEntry);
 }
 
-// Employees data and passwords
-const employees = []; // Store the names of employees
-const userPasswords = {}; // Store passwords for each employee
-
-const checkInOutData = {}; // Store check-in/check-out data
-
+// زر توليد التقرير
 generateReportButton.addEventListener('click', () => {
     if (isAdmin()) {
         const reportText = generateReport();
@@ -118,8 +103,9 @@ generateReportButton.addEventListener('click', () => {
     }
 });
 
+// دالة لإنشاء التقرير
 function generateReport() {
-    let reportText = 'Check-In/Check-Out Report:\n';
+    let reportText = 'تقرير تسجيل الحضور والانصراف:\n';
 
     for (const employee of employees) {
         const checkIns = checkInOutData[employee] || [];
@@ -127,7 +113,7 @@ function generateReport() {
         reportText += `\n${employee}:\n`;
 
         if (checkIns.length === 0) {
-            reportText += '  - No check-ins or check-outs\n';
+            reportText += '  - لا تسجيلات حضور أو انصراف\n';
         } else {
             for (const checkIn of checkIns) {
                 reportText += `  - ${checkIn}\n`;
@@ -135,7 +121,7 @@ function generateReport() {
         }
     }
 
-    reportText += '\nUsers who didn\'t check in:\n';
+    reportText += '\nالمستخدمين الذين لم يقوموا بتسجيل الحضور:\n';
 
     for (const employee of employees) {
         if (!(employee in checkInOutData)) {
@@ -146,7 +132,7 @@ function generateReport() {
     return reportText;
 }
 
-// Event listener for the admin logout button
+// إضافة مستمع لزر تسجيل الخروج للمشرف
 adminLogoutButton.addEventListener('click', () => {
     adminLogout();
 });
