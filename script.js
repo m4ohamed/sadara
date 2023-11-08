@@ -110,4 +110,43 @@ const userPasswords = {}; // Store passwords for each employee
 
 const checkInOutData = {}; // Store check-in/check-out data
 
-generateReportButton.addEventListener('click', ()
+generateReportButton.addEventListener('click', () => {
+    if (isAdmin()) {
+        const reportText = generateReport();
+        report.textContent = reportText;
+        reportPanel.style.display = 'block';
+    }
+});
+
+function generateReport() {
+    let reportText = 'Check-In/Check-Out Report:\n';
+
+    for (const employee of employees) {
+        const checkIns = checkInOutData[employee] || [];
+
+        reportText += `\n${employee}:\n`;
+
+        if (checkIns.length === 0) {
+            reportText += '  - No check-ins or check-outs\n';
+        } else {
+            for (const checkIn of checkIns) {
+                reportText += `  - ${checkIn}\n`;
+            }
+        }
+    }
+
+    reportText += '\nUsers who didn\'t check in:\n';
+
+    for (const employee of employees) {
+        if (!(employee in checkInOutData)) {
+            reportText += `  - ${employee}\n`;
+        }
+    }
+
+    return reportText;
+}
+
+// Event listener for the admin logout button
+adminLogoutButton.addEventListener('click', () => {
+    adminLogout();
+});
