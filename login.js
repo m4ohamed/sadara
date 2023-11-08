@@ -1,65 +1,24 @@
-const adminUsername = 'admin'; // قم بتغيير اسم المستخدم الخاص بالمشرف
-const adminPassword = '665544400'; // قم بتغيير كلمة المرور الخاصة بالمشرف
+// تعريف اسم المستخدم وكلمة المرور الخاصين بالمشرف
+const adminUsername = 'admin';
+const adminPassword = 'admin';
+
+// الحصول على العناصر المطلوبة من الصفحة
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const loginButton = document.getElementById('loginButton');
-const employeeInfo = document.querySelector('.employee-info');
-const checkInButton = document.getElementById('checkInButton');
-const checkOutButton = document.getElementById('checkOutButton');
-const adminPanel = document.querySelector('.admin-panel');
 
-let loggedInUser = null;
-
-// التحقق مما إذا كان المستخدم الحالي هو مشرف
-function isAdmin() {
-    return loggedInUser === adminUsername;
-}
-
+// إضافة مستمع للحدث على زر تسجيل الدخول
 loginButton.addEventListener('click', () => {
+    // الحصول على قيمة اسم المستخدم وكلمة المرور من الحقول
     const username = usernameInput.value;
     const password = passwordInput.value;
 
+    // التحقق مما إذا كانت القيم مطابقة للمشرف
     if (username === adminUsername && password === adminPassword) {
-        loggedInUser = username;
-        usernameInput.value = '';
-        passwordInput.value = '';
-        if (isAdmin()) {
-            showAdminWelcomeMessage();
-            redirectToAdminPage();
-        } else {
-            redirectToLogPage();
-        }
+        // إعادة توجيه المستخدم إلى صفحة الإدارة
+        window.location.href = 'admin.html';
     } else {
-        alert('اسم المستخدم أو كلمة المرور غير صحيحة');
+        // إعادة توجيه المستخدم إلى صفحة السجل
+        window.location.href = 'log.html';
     }
 });
-
-function showAdminWelcomeMessage() {
-    employeeInfo.textContent = `مرحبًا ${loggedInUser} (مدير)`;
-}
-
-function redirectToAdminPage() {
-    window.location.href = 'admin.html';
-}
-
-function redirectToLogPage() {
-    window.location.href = 'log.html';
-}
-
-function redirectToLoginPage() {
-    window.location.href = 'login.html';
-}
-
-// إضافة الشرط للتحقق من وجود الزر قبل إضافة المستمع
-const adminLogoutButton = document.getElementById('adminLogoutButton');
-if (adminLogoutButton) {
-    adminLogoutButton.addEventListener('click', () => {
-        loggedInUser = null;
-        employeeInfo.textContent = '';
-        checkInButton.style.display = 'none';
-        checkOutButton.style.display = 'none';
-        adminPanel.style.display = 'none';
-        adminLogoutButton.style.display = 'none';
-        redirectToLoginPage();
-    });
-}
