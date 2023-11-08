@@ -49,3 +49,17 @@ function redirectToLogPage() {
 function redirectToLoginPage() {
     window.location.href = 'login.html';
 }
+
+// إضافة الشرط للتحقق من وجود الزر قبل إضافة المستمع
+const adminLogoutButton = document.getElementById('adminLogoutButton');
+if (adminLogoutButton) {
+    adminLogoutButton.addEventListener('click', () => {
+        loggedInUser = null;
+        employeeInfo.textContent = '';
+        checkInButton.style.display = 'none';
+        checkOutButton.style.display = 'none';
+        adminPanel.style.display = 'none';
+        adminLogoutButton.style.display = 'none';
+        redirectToLoginPage();
+    });
+}
