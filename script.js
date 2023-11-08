@@ -36,8 +36,10 @@ function adminLogout() {
     loggedInUser = null;
     showAdminPanel();
     adminLogoutButton.style.display = 'none';
-    reportPanel.style display = 'none';
+    reportPanel.style.display = 'none';
     loginButton.style.display = 'block';
+    // تحويل المستخدم إلى صفحة تسجيل الدخول بعد تسجيل الخروج
+    window.location = 'index.html';
 }
 
 loginButton.addEventListener('click', () => {
@@ -51,6 +53,8 @@ loginButton.addEventListener('click', () => {
         showAdminPanel();
         adminLogoutButton.style.display = 'block';
         loginButton.style.display = 'none';
+        // تحويل المستخدم إلى صفحة الإدارة بعد تسجيل الدخول بنجاح
+        window.location = 'admin.html';
     } else {
         alert('اسم المستخدم أو كلمة المرور غير صحيحة');
     }
