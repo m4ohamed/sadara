@@ -24,12 +24,8 @@ loginButton.addEventListener('click', () => {
         loggedInUser = username;
         usernameInput.value = '';
         passwordInput.value = '';
-        employeeInfo.textContent = `مرحبًا ${loggedInUser}`;
-        checkInButton.style.display = 'block';
-        checkOutButton.style display = 'block';
         if (isAdmin()) {
-            adminPanel.style.display = 'block';
-            adminLogoutButton.style.display = 'block';
+            showAdminWelcomeMessage();
             redirectToAdminPage();
         } else {
             redirectToLogPage();
@@ -39,7 +35,10 @@ loginButton.addEventListener('click', () => {
     }
 });
 
-// إضافة مستمع لزر تسجيل الخروج للمشرف
+function showAdminWelcomeMessage() {
+    employeeInfo.textContent = `مرحبًا ${loggedInUser} (مدير)`;
+}
+
 adminLogoutButton.addEventListener('click', () => {
     loggedInUser = null;
     employeeInfo.textContent = '';
