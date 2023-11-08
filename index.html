@@ -1,40 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Check-In/Check-Out</title>
+    <title>تسجيل حضور وانصراف الموظفين</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <div class="header">Employee Check-In/Check-Out</div>
+        <div class="header">تسجيل حضور وانصراف الموظفين</div>
 
-        <!-- Login Form -->
+        <!-- نموذج تسجيل الدخول -->
         <div class="login-form">
-            <input type="text" id="username" placeholder="Username">
-            <input type="password" id="password" placeholder="Password">
-            <button id="loginButton">Login</button>
+            <input type="text" id="username" placeholder="اسم المستخدم">
+            <input type="password" id="password" placeholder="كلمة المرور">
+            <button id="loginButton">تسجيل الدخول</button>
         </div>
 
         <div class="employee-info">
-            <!-- Employee name will be displayed here after login -->
+            <!-- اسم الموظف سيتم عرضه هنا بعد تسجيل الدخول -->
         </div>
 
         <div class="action-buttons">
-            <button id="checkInButton" style="display: none;">Check In</button>
-            <button id="checkOutButton" style="display: none;">Check Out</button>
+            <button id="checkInButton" style="display: none;">تسجيل الحضور</button>
+            <button id="checkOutButton" style="display: none;">تسجيل الانصراف</button>
         </div>
         <div class="admin-panel" style="display: none;">
-            <h2>Admin Panel</h2>
-            <input type="text" id="newEmployee" placeholder="New Employee Name">
-            <input type="password" id="newEmployeePassword" placeholder="Password for New Employee">
-            <button id="addEmployeeButton">Add Employee</button>
-            <button id="generateReportButton">Generate Report</button>
-            <button id="adminLogoutButton" style="display: none;">Logout</button>
+            <h2>لوحة الإدارة</h2>
+            <input type="text" id="newEmployee" placeholder="اسم الموظف الجديد">
+            <input type="password" id="newEmployeePassword" placeholder="كلمة مرور الموظف الجديد">
+            <button id="addEmployeeButton">إضافة موظف</button>
+            <button id="generateReportButton">إنشاء تقرير</button>
+            <button id="adminLogoutButton" style="display: none;">تسجيل الخروج</button>
         </div>
         <div class="report-panel" style="display: none;">
-            <h2>Report Panel</h2>
+            <h2>لوحة التقارير</h2>
             <div id="report"></div>
         </div>
         <div class="log">
