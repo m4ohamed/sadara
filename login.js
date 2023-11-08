@@ -1,5 +1,5 @@
 const adminUsername = 'admin'; // قم بتغيير اسم المستخدم الخاص بالمشرف
-const adminPassword = '665544400'; // قم بتغيير كلمة المرور الخاصة بالمشرف
+const adminPassword = 'admin'; // قم بتغيير كلمة المرور الخاصة بالمشرف
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const loginButton = document.getElementById('loginButton');
