@@ -1,5 +1,5 @@
 const adminUsername = 'admin'; // قم بتغيير اسم المستخدم الخاص بالمشرف
-const adminPassword = 'admin'; // قم بتغيير كلمة المرور الخاصة بالمشرف
+const adminPassword = '665544400'; // قم بتغيير كلمة المرور الخاصة بالمشرف
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const loginButton = document.getElementById('loginButton');
@@ -26,10 +26,13 @@ loginButton.addEventListener('click', () => {
         passwordInput.value = '';
         employeeInfo.textContent = `مرحبًا ${loggedInUser}`;
         checkInButton.style.display = 'block';
-        checkOutButton.style.display = 'block';
+        checkOutButton.style display = 'block';
         if (isAdmin()) {
             adminPanel.style.display = 'block';
             adminLogoutButton.style.display = 'block';
+            redirectToAdminPage();
+        } else {
+            redirectToLogPage();
         }
     } else {
         alert('اسم المستخدم أو كلمة المرور غير صحيحة');
@@ -44,4 +47,17 @@ adminLogoutButton.addEventListener('click', () => {
     checkOutButton.style.display = 'none';
     adminPanel.style.display = 'none';
     adminLogoutButton.style.display = 'none';
+    redirectToLoginPage();
 });
+
+function redirectToAdminPage() {
+    window.location.href = 'admin.html';
+}
+
+function redirectToLogPage() {
+    window.location.href = 'log.html';
+}
+
+function redirectToLoginPage() {
+    window.location.href = 'login.html';
+}
