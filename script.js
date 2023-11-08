@@ -36,7 +36,7 @@ function adminLogout() {
     loggedInUser = null;
     showAdminPanel();
     adminLogoutButton.style.display = 'none';
-    reportPanel.style.display = 'none';
+    reportPanel.style display = 'none';
     loginButton.style.display = 'block';
 }
 
