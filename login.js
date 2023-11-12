@@ -8,6 +8,7 @@ const adminPassword = 'admin';
 // الحصول على العناصر المطلوبة من الصفحة
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
+const errorMessage = document.getElementById('error-message');
 const loginButton = document.getElementById('loginButton');
 
 // إضافة مستمع للحدث على زر تسجيل الدخول
@@ -26,7 +27,7 @@ loginButton.addEventListener('click', () => {
         // إعادة توجيه المستخدم إلى صفحة الإدارة
         window.location.href = 'admin_dashboard.html';
     } else {
-        // إعادة توجيه المستخدم إلى صفحة السجل في حالة عدم تطابق المستخدم
-        window.location.href = 'log.html';
+        // عرض رسالة الخطأ في حالة عدم تطابق المستخدم
+        errorMessage.textContent = 'اسم المستخدم أو كلمة المرور غير صحيحة.';
     }
 });
