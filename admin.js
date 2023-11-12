@@ -25,3 +25,10 @@ deleteEmployeeButton.addEventListener('click', () => {
     // Redirect to the "Delete Employee" page
     window.location.href = 'delete_employee.html';
 });
+
+// Attendance Log Button
+const attendanceLogButton = document.getElementById('attendanceLogButton');
+attendanceLogButton.addEventListener('click', () => {
+    // Redirect to the "Attendance Log" page
+    window.location.href = 'attendance_log.html';
+});
