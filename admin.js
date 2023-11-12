@@ -1,64 +1,27 @@
-const newEmployeeInput = document.getElementById('newEmployee');
-const newEmployeePasswordInput = document.getElementById('newEmployeePassword');
+// Logout Button
+const logoutButton = document.getElementById('logoutButton');
+logoutButton.addEventListener('click', () => {
+    // Redirect to the login page or any other desired page
+    window.location.href = 'login.html';
+});
+
+// Add Employee Button
 const addEmployeeButton = document.getElementById('addEmployeeButton');
-const generateReportButton = document.getElementById('generateReportButton');
-const reportPanel = document.querySelector('.report-panel');
-const report = document.getElementById('report');
-
-const employees = [];
-const checkInOutData = {};
-
-// إضافة مستخدم جديد
 addEmployeeButton.addEventListener('click', () => {
-    if (isAdmin()) {
-        const newEmployeeName = newEmployeeInput.value;
-        const newEmployeePassword = newEmployeePasswordInput.value;
-        if (newEmployeeName && newEmployeePassword) {
-            // إضافة مستخدم جديد
-            employees.push(newEmployeeName);
-            // يمكنك تخزين كلمات المرور للمستخدمين في هيكل بيانات منفصل
-            // في هذا المثال، نضيفها إلى الهيكل بيانات الحضور والانصراف
-            checkInOutData[newEmployeeName] = [];
-            newEmployeeInput.value = '';
-            newEmployeePasswordInput.value = '';
-        }
-    }
+    // Redirect to the "Add Employee" page
+    window.location.href = 'add_employee.html';
 });
 
-// زر توليد التقرير
-generateReportButton.addEventListener('click', () => {
-    if (isAdmin()) {
-        const reportText = generateReport();
-        report.textContent = reportText;
-        reportPanel.style.display = 'block';
-    }
+// Create Report Button
+const createReportButton = document.getElementById('createReportButton');
+createReportButton.addEventListener('click', () => {
+    // Redirect to the "Create Reports" page
+    window.location.href = 'create_reports.html';
 });
 
-// دالة لإنشاء التقرير
-function generateReport() {
-    let reportText = 'تقرير تسجيل الحضور والانصراف:\n';
-
-    for (const employee of employees) {
-        const checkIns = checkInOutData[employee] || [];
-
-        reportText += `\n${employee}:\n`;
-
-        if (checkIns.length === 0) {
-            reportText += '  - لا تسجيلات حضور أو انصراف\n';
-        } else {
-            for (const checkIn of checkIns) {
-                reportText += `  - ${checkIn}\n`;
-            }
-        }
-    }
-
-    reportText += '\nالمستخدمين الذين لم يقوموا بتسجيل الحضور:\n';
-
-    for (const employee of employees) {
-        if (!(employee in checkInOutData)) {
-            reportText += `  - ${employee}\n`;
-        }
-    }
-
-    return reportText;
-}
+// Delete Employee Button
+const deleteEmployeeButton = document.getElementById('deleteEmployeeButton');
+deleteEmployeeButton.addEventListener('click', () => {
+    // Redirect to the "Delete Employee" page
+    window.location.href = 'delete_employee.html';
+});
