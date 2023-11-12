@@ -6,10 +6,10 @@ logoutButton.addEventListener('click', () => {
 });
 
 // Add Employee Button
-const addEmployeeButton = document.getElementById('addEmployeeButton');
+const addEmployeeButton = document.getElementById('employeeManagementButton');
 addEmployeeButton.addEventListener('click', () => {
     // Redirect to the "Add Employee" page
-    window.location.href = 'add_employee.html';
+    window.location.href = 'employee_management.html';
 });
 
 // Create Report Button
@@ -17,13 +17,6 @@ const createReportButton = document.getElementById('createReportButton');
 createReportButton.addEventListener('click', () => {
     // Redirect to the "Create Reports" page
     window.location.href = 'create_reports.html';
-});
-
-// Delete Employee Button
-const deleteEmployeeButton = document.getElementById('deleteEmployeeButton');
-deleteEmployeeButton.addEventListener('click', () => {
-    // Redirect to the "Delete Employee" page
-    window.location.href = 'delete_employee.html';
 });
 
 // Attendance Log Button
