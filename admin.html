@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة الإدارة</title>
+    <title>صفحة المدير</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <div class="header">لوحة الإدارة</div>
+        <div class="header">مرحبًا بك في صفحة المدير</div>
 
-        <div class="admin-panel">
-            <h2>لوحة الإدارة</h2>
-            <input type="text" id="newEmployee" placeholder="اسم الموظف الجديد">
-            <input type="password" id="newEmployeePassword" placeholder="كلمة مرور الموظف الجديد">
+        <!-- زر تسجيل الخروج -->
+        <button id="logoutButton">تسجيل الخروج</button>
+
+        <!-- أزرار الصفحات الأخرى -->
+        <div class="action-buttons">
             <button id="addEmployeeButton">إضافة موظف</button>
-            <button id="generateReportButton">إنشاء تقرير</button>
-            <button id="adminLogoutButton">تسجيل الخروج</button>
+            <button id="createReportButton">إنشاء تقارير</button>
+            <button id="deleteEmployeeButton">حذف موظف</button>
         </div>
     </div>
     <script src="admin.js"></script>
