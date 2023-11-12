@@ -1,4 +1,7 @@
-// تعريف اسم المستخدم وكلمة المرور الخاصين بالمشرف
+// تعريف اسم المستخدم وكلمة المرور الخاصين بالموظف والمشرف
+const employeeUsername = 'employee';
+const employeePassword = 'employee';
+
 const adminUsername = 'admin';
 const adminPassword = 'admin';
 
@@ -13,12 +16,17 @@ loginButton.addEventListener('click', () => {
     const username = usernameInput.value;
     const password = passwordInput.value;
 
+    // التحقق مما إذا كانت القيم مطابقة للموظف
+    if (username === employeeUsername && password === employeePassword) {
+        // إعادة توجيه المستخدم إلى صفحة الموظف
+        window.location.href = 'employee_dashboard.html';
+    }
     // التحقق مما إذا كانت القيم مطابقة للمشرف
-    if (username === adminUsername && password === adminPassword) {
+    else if (username === adminUsername && password === adminPassword) {
         // إعادة توجيه المستخدم إلى صفحة الإدارة
-        window.location.href = 'admin.html';
+        window.location.href = 'admin_dashboard.html';
     } else {
-        // إعادة توجيه المستخدم إلى صفحة السجل
+        // إعادة توجيه المستخدم إلى صفحة السجل في حالة عدم تطابق المستخدم
         window.location.href = 'log.html';
     }
 });
